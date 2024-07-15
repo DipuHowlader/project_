@@ -1,5 +1,5 @@
 import sys
-import logging
+from src.logger import logging
 
 
 def error_meg_details(error, error_detail:sys):
@@ -16,3 +16,10 @@ class custom_exception(Exception):
     def __str__(self):
         return self.error_message
     
+
+if __name__ == "__main__":
+    try:
+        a = 1/0
+    except Exception as e:
+        logging.info("divide by zero")
+        raise custom_exception(e,sys)
